@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default function Row(props) {
   const name = props.info.name
   const amount = props.info.amount

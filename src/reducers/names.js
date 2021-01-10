@@ -3,10 +3,14 @@ const initialState = {names: null, isLoading: true};
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOAD_NAMES':
+      // Count total amount of names
+      const total = action.content.names.reduce((sum, item) => sum + item.amount, 0)
       return {
         ...state, 
+        // when data is loaded, set isLoading to false.
         isLoading: false,
-        names: action.content.names
+        names: action.content.names,
+        namesAmount: total
       }
     case 'SORT_AMOUNT':
       const sortedByAmount = state.names.sort((a, b) => {
